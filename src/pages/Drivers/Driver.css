@@ -1,0 +1,40 @@
+.drivers {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.drivers_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+#customers {
+  width: auto;
+  min-width: 1000px;
+  max-width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border-collapse: collapse;
+}
+
+#customers td,
+#customers th {
+  padding: 1rem 10px;
+  border-bottom: 1px solid #999;
+}
+
+#customers tr:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: right;
+  background-color: #ddd;
+  color: black;
+}
