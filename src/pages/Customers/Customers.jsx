@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Customers.css";
+import GetClients from "../../Api/Clients/GetClients";
 const Customers = () => {
+  useEffect(() => {
+    getAllClients();
+  }, []);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [allClients, setAllClients] = useState([]);
+  const getAllClients = () => {
+    GetClients(setLoading, setError, setAllClients);
+  };
   return (
     <div className="customers">
       <div className="customers_container">
@@ -9,68 +19,23 @@ const Customers = () => {
           <table id="customers">
             <tr>
               <th>الإسم</th>
+              <th>الايميل</th>
               <th>رقم الهاتف</th>
-              <th>الباركود</th>
-              <th>نوع السيارة</th>
-              <th>تاريخ التسليم</th>
-              <th>الباركود</th>
             </tr>
-            <tr>
-              <td>Alfreds Futterkiste</td>
-              <td>Maria Anders</td>
-              <td>Germany</td>
-              <td>Germany</td>
-              <td>Germany</td>
-              <td>Germany</td>
-            </tr>
-            <tr>
-              <td>Berglunds snabbköp</td>
-              <td>Christina Berglund</td>
-              <td>Sweden</td>
-              <td>Sweden</td>
-              <td>Sweden</td>
-              <td>Sweden</td>
-            </tr>
-            <tr>
-              <td>Centro comercial Moctezuma</td>
-              <td>Francisco Chang</td>
-              <td>Mexico</td>
-              <td>Mexico</td>
-              <td>Mexico</td>
-              <td>Mexico</td>
-            </tr>
-            <tr>
-              <td>Ernst Handel</td>
-              <td>Roland Mendel</td>
-              <td>Austria</td>
-              <td>Austria</td>
-              <td>Austria</td>
-              <td>Austria</td>
-            </tr>
-            <tr>
-              <td>Island Trading</td>
-              <td>Helen Bennett</td>
-              <td>UK</td>
-              <td>UK</td>
-              <td>UK</td>
-              <td>UK</td>
-            </tr>
-            <tr>
-              <td>Königlich Essen</td>
-              <td>Philip Cramer</td>
-              <td>Germany</td>
-              <td>Germany</td>
-              <td>Germany</td>
-              <td>Germany</td>
-            </tr>
-            <tr>
-              <td>Laughing Bacchus Winecellars</td>
-              <td>Yoshi Tannamuri</td>
-              <td>Canada</td>
-              <td>Canada</td>
-              <td>Canada</td>
-              <td>Canada</td>
-            </tr>
+            {error}
+            {loading
+              ? "جاري عرض بيانات العملاء"
+              : allClients.length <= 0
+              ? "لا يوجد عملاء"
+              : allClients.map((client, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{client.name}</td>
+                      <td>{client.email}</td>
+                      <td>{client.phone}</td>
+                    </tr>
+                  );
+                })}
           </table>
         </div>
       </div>

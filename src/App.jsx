@@ -6,6 +6,7 @@ import Customers from "./pages/Customers/Customers";
 import Header from "./components/Header/Header";
 import "./App.css";
 import Request from "./pages/Request/Request";
+import Login from "./pages/Login/Login";
 function App() {
   return (
     <Router>
@@ -16,7 +17,8 @@ function App() {
             <Header />
           </div>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/drivers" element={<Drivers />} />
             <Route path="/customers" element={<Customers />} />
             <Route path="/requests" element={<Request />} />

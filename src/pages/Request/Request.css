@@ -58,3 +58,235 @@
 .actions button:last-of-type {
   background-color: #dc3545;
 }
+.request_list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.request_item {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 1rem;
+}
+.request_header {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+.request_header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.request_info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+.request_info span:first-of-type {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.request_info span:last-of-type {
+  color: rgba(230, 87, 34, 1);
+  font-size: 0.9rem;
+}
+.request_item .request_files {
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 16px;
+}
+.files,
+.files_car {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.files {
+  border-left: 1px solid #ddd;
+  padding-left: 1rem;
+}
+.files span,
+.files_car span:first-of-type {
+  font-size: 0.9rem;
+  color: #666;
+}
+.files button {
+  padding: 0.5rem 1rem;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  background-color: transparent;
+  font-family: "Tajawal", sans-serif;
+}
+.request_actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.request_actions button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(230, 87, 34, 1);
+  color: white;
+  cursor: pointer;
+  width: 120px;
+  font-family: "Tajawal", sans-serif;
+  font-weight: bold;
+}
+.request_actions button:last-of-type {
+  background-color: #fff;
+  color: rgba(230, 87, 34, 1);
+  border: 1px solid rgba(230, 87, 34, 1);
+  font-family: "Tajawal", sans-serif;
+}
+.modal_overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.req_modal {
+  width: 800px;
+  max-width: 95%; /* عشان يشتغل كويس على الشاشات الصغيرة */
+  max-height: 90vh; /* يمنع المودال من الخروج برا الشاشة */
+  overflow-y: auto; /* سكرول داخلي */
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 1rem 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  z-index: 1001;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* توسيط حقيقي */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.req_modal_content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.req_modal_header {
+  width: 95%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  padding: 10px;
+}
+.req_modal_header img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.req_modal_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+h3,
+p {
+  margin: 0;
+}
+.req_modal_header_info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+.req_modal_header_info span {
+  font-size: 0.9rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: "Tajawal", sans-serif;
+  justify-content: center;
+}
+.req_modal_header_info_2 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+.req_modal_header_info_2 p span {
+  font-size: 0.9rem;
+  color: rgba(230, 87, 34, 1);
+  font-family: "Tajawal", sans-serif;
+}
+.req_modal_body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.cardId {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 1rem;
+}
+.cardId_images {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+.cardId_images img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+}

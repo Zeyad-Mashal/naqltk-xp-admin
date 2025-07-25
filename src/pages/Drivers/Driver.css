@@ -38,3 +38,144 @@
   background-color: #ddd;
   color: black;
 }
+.driver_verfiy,
+.activated {
+  border: 1px solid rgb(229, 229, 32);
+  color: #383800;
+  padding: 0.5rem 1rem;
+  border-radius: 16px;
+  background-color: transparent;
+  font-weight: bold;
+  width: 120px;
+  font-family: "Tajawal", sans-serif;
+}
+.activated {
+  border: 1px solid rgb(32, 229, 32);
+  color: #008000;
+  background-color: transparent;
+  text-align: center;
+}
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+.driver_modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 80%;
+  max-width: 1000px;
+  border-radius: 12px;
+  padding: 20px;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 90%; /* ⬅️ يخلي المودال ياخد أغلب الشاشة */
+  max-height: 90%; /* ⬅️ يضمن عدم تجاوز الشاشة */
+  overflow-y: auto; /* ⬅️ هنا المهم: يضيف Scroll داخلي */
+}
+
+.driver_modal_content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.driver_modal_left {
+  flex: 1;
+  padding: 20px;
+  background-color: #eee;
+  border-radius: 12px;
+}
+
+.driver_modal_left ul {
+  list-style: none;
+  padding: 0;
+}
+
+.driver_modal_left li {
+  padding: 8px 0;
+  border-bottom: 1px solid #999;
+}
+.left_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.driver_modal_right {
+  flex: 1;
+  text-align: center;
+  background-color: #eee;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.driver_modal_right img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.driver_modal_right p {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.right_info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.driver_modal_right .right_info span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-direction: column;
+  color: rgba(230, 87, 34, 1);
+}
+.driver_modal_right .right_info span b {
+  font-size: 1rem;
+  color: #333;
+}
+.driver_modal_table table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.driver_modal_table th,
+.driver_modal_table td {
+  padding: 8px;
+}
+
+.upload_btn,
+.close_btn {
+  background: #f2f2f2;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.upload_btn {
+  background-color: rgba(230, 87, 34, 0.13);
+  color: rgba(230, 87, 34, 1);
+  font-weight: bold;
+  width: 100px;
+}
