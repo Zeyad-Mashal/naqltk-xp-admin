@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./Driver.css";
 import GetDrivers from "../../Api/Drivers/GetDrivers";
+import GetTravels from "../../Api/Drivers/GetTravels";
 import avatar from "../../assets/req-ava.jpg"; // صورة افتراضية للسائق
 import { FaPhone } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci";
+import { Link } from "react-router-dom";
 const Drivers = () => {
   useEffect(() => {
     getAllDrivers();
@@ -14,6 +16,7 @@ const Drivers = () => {
   const [allDrivers, setAllDrivers] = useState([]);
   const [selectedDriver, setSelectedDriver] = useState(null); // السائق اللي هنفتحه
   const [showModal, setShowModal] = useState(false); // حالة المودال
+  const [allTravels, setAllTravels] = useState([]); // لتخزين الرحلات
 
   const getAllDrivers = () => {
     GetDrivers(setLoading, setError, setAllDrivers);
@@ -22,6 +25,7 @@ const Drivers = () => {
   const openDriverModal = (driver) => {
     setSelectedDriver(driver);
     setShowModal(true);
+    GetTravels(setLoading, setError, setAllTravels, driver._id);
   };
 
   return (
@@ -37,7 +41,8 @@ const Drivers = () => {
                 <th>رقم الهاتف</th>
                 <th>كود التعريفي للسائق</th>
                 <th>نوع السيارة</th>
-                <th>تاريخ التسليم</th>
+                <th>المحفظه</th>
+                <th>حاله السائق</th>
               </tr>
             </thead>
             <tbody>
@@ -50,6 +55,9 @@ const Drivers = () => {
                       <td>{driver.phone}</td>
                       <td>{driver.driverId}</td>
                       <td>{driver.vehicle}</td>
+                      <td className="wallet_driver">
+                        <Link to={`/wallet/${driver._id}`}>المحفظه</Link>
+                      </td>
                       <td>
                         {driver.verify ? (
                           <button className="activated">مفعل</button>
@@ -123,44 +131,34 @@ const Drivers = () => {
                     <th>الوجهة</th>
                     <th>نوع الشحنة</th>
                     <th>تاريخ التسليم</th>
+                    <th>نوع الحموله</th>
+                    <th>سعر الرحله</th>
+                    <th>نوع السياره</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>#67890</td>
-                    <td>القاهرة - مصر الجديدة</td>
-                    <td>القاهرة - مصر الجديدة</td>
-                    <td>نقل أثاث</td>
-                    <td>12.09.2019 - 12:53 PM</td>
-                  </tr>
-                  <tr>
-                    <td>#67890</td>
-                    <td>القاهرة - مصر الجديدة</td>
-                    <td>القاهرة - مصر الجديدة</td>
-                    <td>نقل أثاث</td>
-                    <td>12.09.2019 - 12:53 PM</td>
-                  </tr>
-                  <tr>
-                    <td>#67890</td>
-                    <td>القاهرة - مصر الجديدة</td>
-                    <td>القاهرة - مصر الجديدة</td>
-                    <td>نقل أثاث</td>
-                    <td>12.09.2019 - 12:53 PM</td>
-                  </tr>
-                  <tr>
-                    <td>#67890</td>
-                    <td>القاهرة - مصر الجديدة</td>
-                    <td>القاهرة - مصر الجديدة</td>
-                    <td>نقل أثاث</td>
-                    <td>12.09.2019 - 12:53 PM</td>
-                  </tr>
-                  <tr>
-                    <td>#67891</td>
-                    <td>القاهرة - مصر الجديدة</td>
-                    <td>القاهرة - مصر الجديدة</td>
-                    <td>نقل أثاث</td>
-                    <td>12.09.2019 - 12:53 PM</td>
-                  </tr>
+                  {allTravels.length === 0
+                    ? "لا توجد رحلات"
+                    : allTravels.map((travel, index) => {
+                        return (
+                          <tr key={index}>
+                            <td>#{travel.title}</td>
+                            <td>
+                              {travel.from_city} - {travel.from}
+                            </td>
+                            <td>
+                              {travel.to_city} - {travel.to}
+                            </td>
+                            <td>
+                              {travel.date} - {travel.time}
+                            </td>
+                            <td>{travel.type}</td>
+
+                            <td>{travel.price} جنيه</td>
+                            <td>{travel.vehicle}</td>
+                          </tr>
+                        );
+                      })}
                 </tbody>
               </table>
             </div>

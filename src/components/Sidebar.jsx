@@ -63,30 +63,6 @@ const Sidebar = () => {
             <FaTruck /> الرحلات
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/chats"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            <FaComments /> المحادثات
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/operators"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            <FaUserCog /> المشغلين
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/users"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            <FaUserShield /> المستخدمين
-          </NavLink>
-        </li>
       </ul>
 
       {/* تسجيل الخروج */}

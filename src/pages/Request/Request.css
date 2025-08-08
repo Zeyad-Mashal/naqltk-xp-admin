@@ -290,3 +290,42 @@ p {
   height: auto;
   border-radius: 10px;
 }
+.tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  background-color: #eee;
+  padding: 10px;
+  border-radius: 16px;
+}
+
+.tabs button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Tajawal", sans-serif;
+  font-weight: bold;
+  width: 150px;
+  transition: 0.3s ease;
+}
+
+.tabs button.active {
+  background: rgba(230, 87, 34, 1);
+  color: #fff;
+  border-color: rgba(230, 87, 34, 1);
+}
+.closeReq {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #dc3545;
+  color: white;
+  cursor: pointer;
+  font-family: "Tajawal", sans-serif;
+  font-weight: bold;
+  margin-top: 1rem;
+  width: 200px;
+}

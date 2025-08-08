@@ -4,6 +4,8 @@ import GetRequest from "../../Api/Request/GetRequest";
 import Verify from "../../Api/Request/Verify";
 import Cancel from "../../Api/Request/Cancel";
 import avatar from "../../assets/req-ava.jpg";
+import cars from "../../assets/logo.png";
+import papers from "../../assets/react.svg";
 import { FaPhone } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci";
@@ -16,6 +18,8 @@ const Request = () => {
   const [error, setError] = useState("");
   const [allRequests, setAllRequests] = useState([]);
   const [reqModel, setReqModel] = useState(false);
+  const [selectedRequest, setSelectedRequest] = useState(null); // الطلب الحالي
+  const [activeTab, setActiveTab] = useState("id"); // التاب الحالي
 
   const getAllRequests = () => {
     GetRequest(setLoading, setError, setAllRequests);
@@ -26,6 +30,27 @@ const Request = () => {
   const handleCancel = (id) => {
     Cancel(setLoading, setError, id, getAllRequests);
   };
+
+  const openModal = (req) => {
+    setSelectedRequest(req);
+    setReqModel(true);
+    setActiveTab("id");
+  };
+
+  const images = [
+    { src: avatar, alt: "Avatar" },
+    { src: avatar, alt: "Avatar" },
+  ];
+
+  const imagesCar = [
+    { src: cars, alt: "Avatar" },
+    { src: cars, alt: "Avatar" },
+  ];
+
+  const imagesPapers = [
+    { src: papers, alt: "Avatar" },
+    { src: papers, alt: "Avatar" },
+  ];
 
   return (
     <div className="Request">
@@ -40,7 +65,7 @@ const Request = () => {
                 return (
                   <div className="request_item" key={index}>
                     <div className="request_header">
-                      <img src={avatar} alt="" />
+                      <img src={req?.vehiclePic} alt="" />
                       <div className="request_info">
                         <span>{req.name}</span>
                         <span>#{req.driverId}</span>
@@ -48,16 +73,14 @@ const Request = () => {
                     </div>
                     <div className="request_files">
                       <div className="files">
-                        <span onClick={() => console.log(req._id)}>
-                          الملفات
-                        </span>
-                        <button onClick={() => setReqModel(true)}>
+                        <span>الملفات</span>
+                        <button onClick={() => openModal(req)}>
                           عرض الملفات
                         </button>
                       </div>
                       <div className="files_car">
                         <span>نوع السيارة</span>
-                        <span>سيارة خاصة</span>
+                        <span>{req.vehicleType || "سيارة خاصة"}</span>
                       </div>
                     </div>
                     {error}
@@ -80,7 +103,8 @@ const Request = () => {
                 );
               })}
         </div>
-        {reqModel && (
+
+        {reqModel && selectedRequest && (
           <>
             <div
               className="modal_overlay"
@@ -91,40 +115,92 @@ const Request = () => {
                 <div className="req_modal_header">
                   <img src={avatar} alt="Avatar" />
                   <div className="req_modal_info">
-                    <h3>اسم السائق</h3>
+                    <h3>{selectedRequest.name}</h3>
                     <div className="req_modal_header_info">
                       <span>
-                        <FaPhone /> 0123456789
+                        <FaPhone /> {selectedRequest.phone}
                       </span>
                       <span>
                         <MdOutlineEmail />
-                        zyadomar112@gmail.com
+                        {selectedRequest.email}
                       </span>
                       <span>
                         <CiLocationOn />
-                        القاهرة - مصر الجديدة{" "}
+                        {selectedRequest.city || "القاهرة - مصر الجديدة"}
                       </span>
                     </div>
                     <div className="req_modal_header_info_2">
                       <p>
-                        رقم الهوية: <span>123456789</span>
+                        رقم الهوية: <span>{selectedRequest.nationalId}</span>
                       </p>
                       <p>
-                        رقم الرخصة: <span>987654321</span>
+                        رقم الرخصة: <span>{selectedRequest.licenseId}</span>
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="req_modal_body">
-                  <div className="cardId">
-                    <h3>صور البطاقة</h3>
-                    <div className="cardId_images">
-                      <img src={avatar} alt="Card Front" />
-                      <img src={avatar} alt="Card Back" />
-                    </div>
-                  </div>
+
+                {/* Tabs */}
+                <div className="tabs">
+                  <button
+                    className={activeTab === "id" ? "active" : ""}
+                    onClick={() => setActiveTab("id")}
+                  >
+                    صور البطاقة
+                  </button>
+                  <button
+                    className={activeTab === "legal" ? "active" : ""}
+                    onClick={() => setActiveTab("legal")}
+                  >
+                    الأوراق القانونية
+                  </button>
+                  <button
+                    className={activeTab === "car" ? "active" : ""}
+                    onClick={() => setActiveTab("car")}
+                  >
+                    صور السيارة
+                  </button>
                 </div>
-                <button onClick={() => setReqModel(false)}>إغلاق</button>
+
+                <div className="req_modal_body">
+                  {activeTab === "id" && (
+                    <div className="cardId_images">
+                      {selectedRequest.nationalityId.length ? (
+                        selectedRequest.nationalityId.map((img, i) => (
+                          <img key={i} src={img} alt={img.alt} />
+                        ))
+                      ) : (
+                        <p>لا توجد صور</p>
+                      )}
+                    </div>
+                  )}
+                  {activeTab === "legal" && (
+                    <div className="cardId_images">
+                      {selectedRequest.verificationPapers.length ? (
+                        selectedRequest.verificationPapers.map((img, i) => (
+                          <img key={i} src={img} alt="Legal Doc" />
+                        ))
+                      ) : (
+                        <p>لا توجد صور</p>
+                      )}
+                    </div>
+                  )}
+                  {activeTab === "car" && (
+                    <div className="cardId_images">
+                      {selectedRequest.vehiclePic.length ? (
+                        selectedRequest.vehiclePic.map((img, i) => (
+                          <img key={i} src={img} alt="Car" />
+                        ))
+                      ) : (
+                        <p>لا توجد صور</p>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                <button onClick={() => setReqModel(false)} className="closeReq">
+                  إغلاق
+                </button>
               </div>
             </div>
           </>

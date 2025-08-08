@@ -1,0 +1,143 @@
+.dashboard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+.dashboard_container {
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.dashboard_stats {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.dashboard_stat {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  width: 33%;
+  padding: 10px;
+}
+.users {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.users svg {
+  width: 24px;
+  height: 24px;
+  background-color: #eee;
+  border-radius: 16px;
+  padding: 1rem;
+  color: #444;
+}
+.user_data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+.user_data p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: bold;
+}
+.user_data span {
+  font-size: 1.5rem;
+  color: #000;
+  font-weight: bold;
+}
+.dashboard_stat select {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  outline: none;
+  color: #333;
+  font-weight: bold;
+}
+.dashboard_body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.dashboard_drivers {
+  width: 50%;
+  max-height: 300px; /* أقصى طول */
+  height: 300px;
+  overflow-y: auto; /* علشان يظهر السكروول لو زاد المحتوى */
+  background-color: #fff;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column; /* العناصر فوق بعض */
+  gap: 0.2rem;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.drivers_list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.driver_item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  transition: 0.3s ease;
+}
+.driver_item:hover {
+  background-color: rgba(230, 87, 34, 0.07);
+  cursor: pointer;
+}
+.driver_item img {
+  width: 40px;
+}
+.driver_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.driver_info p {
+  color: rgba(0, 0, 0, 1);
+  font-weight: bold;
+}
+.driver_info span {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: bold;
+}
+.income_graph {
+  width: 50%;
+  height: 300px;
+  background-color: #fff;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 10px;
+  border-radius: 8px;
+}
