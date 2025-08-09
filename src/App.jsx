@@ -9,6 +9,7 @@ import Request from "./pages/Request/Request";
 import Login from "./pages/Login/Login";
 import Trips from "./pages/Trips/Trips";
 import Wallet from "./pages/Wallet/Wallet";
+import Withdraw from "./pages/Withdraw/Withdraw";
 function App() {
   const isAuth = localStorage.getItem("naqltkxp-token");
   return (
@@ -35,6 +36,10 @@ function App() {
               element={isAuth ? <Request /> : <Login />}
             />
             <Route path="/trips" element={isAuth ? <Trips /> : <Login />} />
+            <Route
+              path="/withdraw"
+              element={isAuth ? <Withdraw /> : <Login />}
+            />
             <Route
               path="/wallet/:driverId"
               element={isAuth ? <Wallet /> : <Login />}

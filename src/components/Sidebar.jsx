@@ -5,13 +5,11 @@ import {
   FaTruck,
   FaSignOutAlt,
   FaClipboardList,
-  FaComments,
-  FaUserCog,
-  FaUserShield,
   FaQuestionCircle,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png"; // حط اللوجو بتاعك هنا
+import { PiHandWithdrawBold } from "react-icons/pi";
 
 const Sidebar = () => {
   return (
@@ -61,6 +59,15 @@ const Sidebar = () => {
             className={({ isActive }) => (isActive ? "active" : "")}
           >
             <FaTruck /> الرحلات
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/withdraw"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            <PiHandWithdrawBold />
+            طلبات السحب
           </NavLink>
         </li>
       </ul>
