@@ -52,10 +52,15 @@ body {
 }
 
 .content {
-  margin-right: 250px;
   padding: 20px;
-  width: 100%;
+  width: 90%;
 }
+
+/* لو في Sidebar نخلي فيه margin */
+.app-container .content {
+  margin-right: 250px;
+}
+
 .sidebar ul li .active {
   color: #000;
   background-color: rgba(230, 87, 34, 0.15);

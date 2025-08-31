@@ -12,6 +12,10 @@ import logo from "../assets/logo.png"; // حط اللوجو بتاعك هنا
 import { PiHandWithdrawBold } from "react-icons/pi";
 
 const Sidebar = () => {
+  const logout = () => {
+    localStorage.removeItem("naqltkxp-token");
+    window.location.reload();
+  };
   return (
     <div className="sidebar">
       {/* اللوجو */}
@@ -77,7 +81,7 @@ const Sidebar = () => {
         <NavLink to="/help">
           <FaQuestionCircle /> مساعدة
         </NavLink>
-        <NavLink to="/logout">
+        <NavLink to="/" onClick={logout}>
           <FaSignOutAlt /> تسجيل الخروج
         </NavLink>
       </div>

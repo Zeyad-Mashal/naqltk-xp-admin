@@ -10,17 +10,29 @@ import Login from "./pages/Login/Login";
 import Trips from "./pages/Trips/Trips";
 import Wallet from "./pages/Wallet/Wallet";
 import Withdraw from "./pages/Withdraw/Withdraw";
+
 function App() {
-  const isAuth = localStorage.getItem("naqltkxp-token");
+  const isAuth = Boolean(localStorage.getItem("naqltkxp-token"));
+
   return (
     <Router>
-      <div className="app-container">
-        <Sidebar />
+      <div className={isAuth ? "app-container" : ""}>
+        {/* Render Sidebar only if authenticated */}
+        {isAuth && <Sidebar />}
+
         <div className="content">
-          <div className="header_content">
-            <Header />
-          </div>
+          {/* Render Header only if authenticated */}
+          {isAuth && (
+            <div className="header_content">
+              <Header />
+            </div>
+          )}
+
           <Routes>
+            {/* Public route for Login */}
+            <Route path="/login" element={<Login />} />
+
+            {/* Protected routes: if not authed, show Login */}
             <Route path="/" element={isAuth ? <Dashboard /> : <Login />} />
             <Route
               path="/dashboard"
